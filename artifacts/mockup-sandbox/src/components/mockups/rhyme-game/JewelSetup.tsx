@@ -83,7 +83,7 @@ export function JewelSetup() {
         </div>
 
         {/* Scrollable content area */}
-        <div style={{ position: "absolute", top: 128, bottom: 92, left: 0, right: 0, padding: "0 16px", display: "flex", flexDirection: "column", gap: 10, overflowY: "auto" }}>
+        <div style={{ position: "absolute", top: 160, bottom: 92, left: 0, right: 0, padding: "0 16px", display: "flex", flexDirection: "column", gap: 10, overflowY: "auto" }}>
 
           {/* Preview grid card */}
           <div style={{ background: "rgba(255,255,255,0.09)", border: "1px solid rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", borderRadius: 20, padding: 14 }}>

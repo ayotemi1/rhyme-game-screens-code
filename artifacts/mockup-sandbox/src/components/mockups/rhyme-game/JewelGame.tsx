@@ -1,46 +1,13 @@
 export function JewelGame() {
-  const blueRow1 = ["", "snow", "", "below"];
-  const blueRow2 = ["", "flow", "", "show"];
-  const orangeRow1 = ["", "eat", "", "heat"];
-  const orangeRow2 = ["", "elite", "", "compete"];
-  const emptyRow = ["", "", "", ""];
-
-  const renderRow = (
-    words: string[],
-    type: "blue" | "orange" | "empty" | "dim",
-    rowLabel?: string
-  ) => (
-    <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-      {rowLabel && (
-        <span style={{
-          fontFamily: "'Nunito', sans-serif", fontSize: 10, fontWeight: 700,
-          color: "rgba(255,255,255,0.3)", width: 14, textAlign: "right", flexShrink: 0,
-        }}>{rowLabel}</span>
-      )}
-      {words.map((word, i) => {
-        const hasWord = word !== "";
-        const bg = type === "blue"
-          ? (hasWord ? "linear-gradient(135deg, #3B82F6, #2563EB)" : "rgba(59,130,246,0.15)")
-          : type === "orange"
-          ? (hasWord ? "linear-gradient(135deg, #F59E0B, #D97706)" : "rgba(245,158,11,0.15)")
-          : type === "dim"
-          ? "rgba(255,255,255,0.06)"
-          : "rgba(255,255,255,0.08)";
-        return (
-          <div key={i} style={{
-            flex: 1, height: 36, borderRadius: 9,
-            background: bg,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: hasWord && (type === "blue" || type === "orange") ? "0 2px 8px rgba(0,0,0,0.2)" : "none",
-          }}>
-            {hasWord && (
-              <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 800, fontSize: 12, color: "#fff" }}>{word}</span>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  );
+  const rows: Array<{ words: string[]; type: "blue" | "orange" | "dim" }> = [
+    { words: ["play", "stay", "say", "way"],     type: "dim" },
+    { words: ["fray", "pray", "sway", "day"],    type: "dim" },
+    { words: ["snow", "flow", "glow", "know"],   type: "blue" },
+    { words: ["blow", "low",  "show", "grow"],   type: "blue" },
+    { words: ["eat",  "heat", "beat", "feat"],   type: "orange" },
+    { words: ["meat", "seat", "neat", "treat"],  type: "orange" },
+    { words: ["flow", "slow", "row",  "toe"],    type: "dim" },
+  ];
 
   return (
     <div style={{
@@ -105,27 +72,8 @@ export function JewelGame() {
           </div>
         </div>
 
-        {/* Beat indicator row */}
-        <div style={{
-          position: "absolute", top: 146, left: "50%", transform: "translateX(-50%)",
-          display: "flex", gap: 6, alignItems: "center", zIndex: 10,
-        }}>
-          {[1,2,3,4].map((beat, i) => (
-            <div key={i} style={{
-              width: i === 1 ? 28 : 20,
-              height: i === 1 ? 28 : 20,
-              borderRadius: "50%",
-              background: i === 1 ? "linear-gradient(135deg, #FBBF24, #F59E0B)" : "rgba(255,255,255,0.18)",
-              boxShadow: i === 1 ? "0 0 16px rgba(251,191,36,0.6)" : "none",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}>
-              {i === 1 && <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 11, color: "#2D1B6E" }}>2</span>}
-            </div>
-          ))}
-        </div>
-
         {/* Bouncing ball with trail */}
-        <div style={{ position: "absolute", top: 182, left: "50%", transform: "translateX(-52%)", display: "flex", alignItems: "center", zIndex: 10 }}>
+        <div style={{ position: "absolute", top: 155, left: "50%", transform: "translateX(-52%)", display: "flex", alignItems: "center", zIndex: 10 }}>
           {[0.07, 0.14, 0.23].map((op, i) => (
             <div key={i} style={{
               width: 9 + i * 7, height: 9 + i * 7, borderRadius: "50%",
@@ -140,57 +88,41 @@ export function JewelGame() {
           }} />
         </div>
 
-        {/* Bar counter labels */}
-        <div style={{ position: "absolute", top: 248, left: 0, right: 0, display: "flex", justifyContent: "space-between", padding: "0 20px", zIndex: 10 }}>
-          {[-2, -1, "", 1, 2, 3].map((n, i) => (
-            i === 2 ? <div key={i} style={{ flex: 1 }} /> :
-            <span key={i} style={{ fontFamily: "'Nunito', sans-serif", fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.3)", width: 14, textAlign: "right" }}>{n}</span>
-          ))}
-        </div>
-
         {/* Word grid */}
-        <div style={{ position: "absolute", top: 260, left: 14, right: 14, zIndex: 10 }}>
+        <div style={{ position: "absolute", top: 220, left: 14, right: 14, zIndex: 10 }}>
           <div style={{
             background: "rgba(20,8,60,0.4)",
             border: "1px solid rgba(255,255,255,0.1)",
             backdropFilter: "blur(16px)",
             borderRadius: 20,
-            padding: 10,
-            display: "flex", flexDirection: "column", gap: 5,
+            padding: "10px 10px",
+            display: "flex", flexDirection: "column", gap: 6,
           }}>
-            {/* Dim rows (future) */}
-            {renderRow(emptyRow, "dim")}
-            {renderRow(emptyRow, "dim")}
-            {/* Blue rhyme set — current */}
-            {renderRow(blueRow1, "blue")}
-            {renderRow(blueRow2, "blue")}
-            {/* Orange — next set */}
-            {renderRow(orangeRow1, "orange")}
-            {renderRow(orangeRow2, "orange")}
-            {/* Fading out row */}
-            <div style={{ display: "flex", gap: 5 }}>
-              {["street", "", "compete", ""].map((w, i) => (
-                <div key={i} style={{
-                  flex: 1, height: 32, borderRadius: 9,
-                  background: w ? "rgba(245,158,11,0.2)" : "rgba(255,255,255,0.04)",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  opacity: 0.6,
-                }}>
-                  {w && <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: 11, color: "rgba(255,255,255,0.5)" }}>{w}</span>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Bar progress indicator */}
-        <div style={{ position: "absolute", top: 574, left: 14, right: 14, zIndex: 10 }}>
-          <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 5 }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 10, color: "rgba(255,255,255,0.4)" }}>Bar 8 / 32</span>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 10, fontWeight: 700, color: "#FBBF24" }}>98% accuracy</span>
-          </div>
-          <div style={{ height: 4, background: "rgba(255,255,255,0.12)", borderRadius: 2, overflow: "hidden" }}>
-            <div style={{ width: "25%", height: "100%", background: "linear-gradient(to right, #FBBF24, #F59E0B)", borderRadius: 2 }} />
+            {rows.map(({ words, type }, ri) => (
+              <div key={ri} style={{ display: "flex", gap: 5 }}>
+                {words.map((word, ci) => {
+                  const filled = word !== "";
+                  const bg =
+                    type === "blue"   ? (filled ? "linear-gradient(135deg, #3B82F6, #2563EB)" : "rgba(59,130,246,0.15)")
+                    : type === "orange" ? (filled ? "linear-gradient(135deg, #F59E0B, #D97706)" : "rgba(245,158,11,0.15)")
+                    : "rgba(255,255,255,0.06)";
+                  const opacity = type === "dim" && ri === rows.length - 1 ? 0.5 : 1;
+                  return (
+                    <div key={ci} style={{
+                      flex: 1, height: 40, borderRadius: 10, background: bg, opacity,
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      boxShadow: filled && type !== "dim" ? "0 2px 8px rgba(0,0,0,0.22)" : "none",
+                    }}>
+                      <span style={{
+                        fontFamily: "'Nunito', sans-serif", fontWeight: 800,
+                        fontSize: type === "dim" ? 11 : 13,
+                        color: type === "dim" ? "rgba(255,255,255,0.35)" : "#fff",
+                      }}>{word}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
 
