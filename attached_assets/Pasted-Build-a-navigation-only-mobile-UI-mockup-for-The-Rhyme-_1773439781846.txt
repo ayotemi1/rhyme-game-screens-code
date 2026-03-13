@@ -1,0 +1,71 @@
+Build a navigation-only mobile UI mockup for "The Rhyme Game" — a freestyle rap learning app.
+
+REFERENCE SCREENS TO RECREATE/POLISH:
+1. Splash screen (logo only, "Tap anywhere to continue")
+2. Home screen (logo + bouncing ball + bottom nav)
+3. Game setup screen (4x4 grid preview + settings selectors + PLAY button)
+4. Active game screen (4-column word grid with bouncing ball + music bar)
+
+DIMENSIONS: iPhone 15 Pro Max (390px wide, full height). No functionality — visuals and navigation only.
+
+---
+
+BRAND COLORS:
+- Primary background: deep rich purple — use #4C1D95 to #6D28D9 range (deeper/darker than the current app's #7C3AED — go more like indigo-purple, not bright violet)
+- Logo pill colors: cream/off-white (#F3F0FF) for "THE" and "GAME", dark navy (#2D1B6E) for "RHYME"
+- Ball: orange-gold gradient (#F59E0B to #D97706), 3D sphere look, smaller than current (about 50-55px)
+- Accent: amber/gold (#FBBF24) for tagline text and active nav states
+- Word tiles: keep orange (#F59E0B) and blue (#3B82F6) tile colors from current app
+
+---
+
+LOGO (keep identical structure):
+- Three stacked rounded pill/rectangle shapes
+- "THE" on top (cream background, dark purple text)
+- "RHYME" in middle (dark navy background, cream text, slightly wider)
+- "GAME" on bottom (cream background, dark purple text)
+- Bold chunky font (Nunito Black or similar)
+
+---
+
+HOME SCREEN UPGRADES (most important screen):
+- Deep purple radial gradient background (darker at edges, richer in center)
+- Ball should have a motion trail behind it (subtle streak effect)
+- Ball floats/bobs with a gentle animation loop
+- REMOVE the brown/dark rectangle nav background — replace with a frosted glass nav bar (dark purple with blur/transparency, seamless with the background)
+- Nav bar: Stats (left) | Play button center raised gold circle | Tools (right)
+- Active nav item uses gold (#FBBF24) color
+- Info (i) icon top-left, Settings gear top-right — both in small frosted glass circle buttons
+- Tagline "Learn how to freestyle rap, FAST!" in gold below logo
+
+---
+
+BOTTOM NAV BAR (apply to all screens):
+- No solid colored rectangle — use backdrop-filter blur with rgba dark purple background
+- Seamlessly blends into the screen
+- Top border: 1px rgba(255,255,255,0.1)
+- Center Play button: raised gold circle, slightly above bar height, triangle play icon in dark purple
+
+---
+
+GAME SETUP SCREEN:
+- Keep the 4x4 letter preview grid at top (dark tiles, orange/blue letter tiles)
+- Keep the carousel selectors: Rhyme Pattern, Fill Mode, Word List
+- Keep Skip Intro toggle + Duration display
+- Recording Off button + green PLAY button at bottom
+- Apply the same frosted bottom nav (no music bar on this screen)
+
+---
+
+ACTIVE GAME SCREEN:
+- Camera background (blurred, dark) with word grid overlay at bottom
+- Word tiles in 4 columns: blue tiles for current rhyme set, orange for next
+- Ball bouncing above the grid
+- Music player bar at bottom (dark, semi-transparent) with track name + pause button
+- Logo stays at top center
+
+---
+
+FEEL: Premium, modern, dark luxury streetwear app. Think Spotify dark mode meets a hip-hop arcade game. Every surface should feel intentional — no flat brown rectangles, no harsh white buttons on dark backgrounds. Glassmorphism where appropriate.
+
+Make each screen tappable to navigate to the next in sequence (Splash → Home → Setup → Game → back to Home).
