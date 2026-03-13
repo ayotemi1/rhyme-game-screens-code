@@ -34,47 +34,17 @@ export function RhymeGameLogo({ size = "medium" }: LogoProps) {
   return (
     <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
 
-      {/* Ball + comet row — aligned so ball sits above THE, offset left */}
+      {/* Ball — centered above THE */}
       <div style={{
-        position: "relative",
-        alignSelf: "flex-start",
-        marginLeft: b * 0.12,
+        alignSelf: "center",
         marginBottom: s.overlap - 4,
         zIndex: 10,
         width: b,
         height: b,
-      }}>
-        {/* Comet — dark angular wedge pointing upper-left */}
-        <svg
-          width={s.cometW + b * 0.5}
-          height={s.cometH + b * 0.6}
-          viewBox={`0 0 ${s.cometW + b * 0.5} ${s.cometH + b * 0.6}`}
-          style={{
-            position: "absolute",
-            right: b * 0.4,
-            bottom: b * 0.3,
-            overflow: "visible",
-          }}
-        >
-          {/* Wedge: point at left, wide at right (connecting to ball) */}
-          <path
-            d={`M 0 ${(s.cometH + b * 0.6) / 2} L ${s.cometW + b * 0.5} 0 L ${s.cometW + b * 0.5} ${s.cometH + b * 0.6} Z`}
-            fill="#1A0E4E"
-            opacity="0.9"
-          />
-        </svg>
-
-        {/* Ball */}
-        <div style={{
-          position: "absolute",
-          bottom: 0, right: 0,
-          width: b, height: b,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at 32% 26%, #FFF8C0 0%, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E 100%)",
-          boxShadow: `0 ${b * 0.1}px ${b * 0.55}px rgba(245,158,11,0.65), 0 0 ${b * 0.7}px rgba(245,158,11,0.2), inset 0 ${-b * 0.14}px ${b * 0.24}px rgba(0,0,0,0.3), inset 0 ${b * 0.1}px ${b * 0.18}px rgba(255,255,255,0.32)`,
-          zIndex: 2,
-        }} />
-      </div>
+        borderRadius: "50%",
+        background: "radial-gradient(circle at 32% 26%, #FFF8C0 0%, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E 100%)",
+        boxShadow: `0 ${b * 0.1}px ${b * 0.55}px rgba(245,158,11,0.65), 0 0 ${b * 0.7}px rgba(245,158,11,0.2), inset 0 ${-b * 0.14}px ${b * 0.24}px rgba(0,0,0,0.3), inset 0 ${b * 0.1}px ${b * 0.18}px rgba(255,255,255,0.32)`,
+      }} />
 
       {/* THE */}
       <div style={{
