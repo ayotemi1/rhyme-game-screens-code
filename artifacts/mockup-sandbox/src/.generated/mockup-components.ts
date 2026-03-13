@@ -2,7 +2,10 @@
 type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/rhyme-game/DarkLuxury.tsx": () => import("../components/mockups/rhyme-game/DarkLuxury.tsx"),
+  "./components/mockups/rhyme-game/JewelTone.tsx": () => import("../components/mockups/rhyme-game/JewelTone.tsx"),
   "./components/mockups/rhyme-game/NeonArcade.tsx": () => import("../components/mockups/rhyme-game/NeonArcade.tsx"),
+  "./components/mockups/rhyme-game/PurpleVelvet.tsx": () => import("../components/mockups/rhyme-game/PurpleVelvet.tsx"),
+  "./components/mockups/rhyme-game/RadiantPurple.tsx": () => import("../components/mockups/rhyme-game/RadiantPurple.tsx"),
   "./components/mockups/rhyme-game/RhymeGameFlow.tsx": () => import("../components/mockups/rhyme-game/RhymeGameFlow.tsx"),
   "./components/mockups/rhyme-game/StreetEditorial.tsx": () => import("../components/mockups/rhyme-game/StreetEditorial.tsx")
 };
