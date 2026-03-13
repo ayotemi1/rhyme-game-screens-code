@@ -34,10 +34,10 @@ export function RhymeGameLogo({ size = "medium" }: LogoProps) {
   return (
     <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
 
-      {/* Ball — centered above THE */}
+      {/* Ball — centered above THE, clear gap so it doesn't touch the pill */}
       <div style={{
         alignSelf: "center",
-        marginBottom: s.overlap - 4,
+        marginBottom: 8,
         zIndex: 10,
         width: b,
         height: b,

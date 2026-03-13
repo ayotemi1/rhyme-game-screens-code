@@ -111,14 +111,14 @@ export function JewelTone() {
         </div>
 
         {/* Tagline */}
-        <div style={{ position: "absolute", top: 360, left: 0, right: 0, textAlign: "center" }}>
+        <div style={{ position: "absolute", top: 382, left: 0, right: 0, textAlign: "center" }}>
           <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, fontWeight: 700, color: "#FEF3C7" }}>
             Learn how to freestyle rap, FAST!
           </span>
         </div>
 
         {/* Level / rank badge */}
-        <div style={{ position: "absolute", top: 388, left: 16, right: 16, display: "flex", gap: 10 }}>
+        <div style={{ position: "absolute", top: 410, left: 16, right: 16, display: "flex", gap: 10 }}>
           <div style={{
             flex: 2,
             background: "rgba(255,255,255,0.13)",
@@ -173,7 +173,7 @@ export function JewelTone() {
         </div>
 
         {/* Now Playing */}
-        <div style={{ position: "absolute", top: 554, left: 16, right: 16 }}>
+        <div style={{ position: "absolute", top: 578, left: 16, right: 16 }}>
           <div style={{
             background: "rgba(255,255,255,0.09)",
             border: "1px solid rgba(255,255,255,0.14)",

@@ -67,7 +67,7 @@ export function JewelGame() {
         </div>
 
         {/* Word grid */}
-        <div style={{ position: "absolute", top: 210, left: 14, right: 14, zIndex: 10 }}>
+        <div style={{ position: "absolute", top: 238, left: 14, right: 14, zIndex: 10 }}>
           <div style={{
             background: "rgba(20,8,60,0.4)",
             border: "1px solid rgba(255,255,255,0.1)",
