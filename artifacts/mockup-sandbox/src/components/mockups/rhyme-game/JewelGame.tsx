@@ -1,3 +1,5 @@
+import { RhymeGameLogo } from './RhymeGameLogo';
+
 export function JewelGame() {
   const rows: Array<{ words: string[]; type: "blue" | "orange" | "dim" }> = [
     { words: ["play", "stay", "say", "way"],     type: "dim" },
@@ -59,37 +61,13 @@ export function JewelGame() {
           </div>
         </div>
 
-        {/* Logo — compact, top center */}
-        <div style={{ position: "absolute", top: 52, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 0, zIndex: 10 }}>
-          <div style={{ background: "#F3F0FF", borderRadius: 10, padding: "3px 18px", marginBottom: -3, zIndex: 1, boxShadow: "0 2px 10px rgba(0,0,0,0.22)" }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 17, color: "#2D1B6E", letterSpacing: 2 }}>THE</span>
-          </div>
-          <div style={{ background: "#2D1B6E", borderRadius: 10, padding: "4px 20px", zIndex: 2, boxShadow: "0 4px 14px rgba(0,0,0,0.3)" }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 21, color: "#F3F0FF", letterSpacing: 2 }}>RHYME</span>
-          </div>
-          <div style={{ background: "#F3F0FF", borderRadius: 10, padding: "3px 18px", marginTop: -3, zIndex: 1, boxShadow: "0 2px 10px rgba(0,0,0,0.22)" }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 17, color: "#2D1B6E", letterSpacing: 2 }}>GAME</span>
-          </div>
-        </div>
-
-        {/* Bouncing ball with trail */}
-        <div style={{ position: "absolute", top: 155, left: "50%", transform: "translateX(-52%)", display: "flex", alignItems: "center", zIndex: 10 }}>
-          {[0.07, 0.14, 0.23].map((op, i) => (
-            <div key={i} style={{
-              width: 9 + i * 7, height: 9 + i * 7, borderRadius: "50%",
-              background: `rgba(245,158,11,${op * 2.5})`,
-              marginRight: 5, filter: "blur(3px)", flexShrink: 0,
-            }} />
-          ))}
-          <div style={{
-            width: 52, height: 52, borderRadius: "50%", flexShrink: 0,
-            background: "radial-gradient(circle at 33% 27%, #FEF9C3 0%, #FCD34D 18%, #F59E0B 44%, #D97706 70%, #92400E 100%)",
-            boxShadow: "0 6px 26px rgba(245,158,11,0.58), 0 0 50px rgba(245,158,11,0.2), inset 0 -8px 14px rgba(0,0,0,0.28), inset 0 5px 10px rgba(255,255,255,0.3)",
-          }} />
+        {/* Logo + ball */}
+        <div style={{ position: "absolute", top: 48, left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
+          <RhymeGameLogo size="small" />
         </div>
 
         {/* Word grid */}
-        <div style={{ position: "absolute", top: 220, left: 14, right: 14, zIndex: 10 }}>
+        <div style={{ position: "absolute", top: 210, left: 14, right: 14, zIndex: 10 }}>
           <div style={{
             background: "rgba(20,8,60,0.4)",
             border: "1px solid rgba(255,255,255,0.1)",

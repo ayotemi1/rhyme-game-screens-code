@@ -1,3 +1,5 @@
+import { RhymeGameLogo } from './RhymeGameLogo';
+
 export function JewelTone() {
   return (
     <div
@@ -103,44 +105,20 @@ export function JewelTone() {
           </div>
         ))}
 
-        {/* Ball */}
-        <div style={{ position: "absolute", top: 158, left: "50%", transform: "translateX(-56%)", display: "flex", alignItems: "center" }}>
-          {[0.08, 0.16, 0.26].map((op, i) => (
-            <div key={i} style={{
-              width: 10 + i * 7, height: 10 + i * 7, borderRadius: "50%",
-              background: `rgba(245,158,11,${op * 2.5})`,
-              marginRight: 5, filter: "blur(3px)", flexShrink: 0,
-            }} />
-          ))}
-          <div style={{
-            width: 56, height: 56, borderRadius: "50%", flexShrink: 0,
-            background: "radial-gradient(circle at 33% 27%, #FEF9C3 0%, #FCD34D 18%, #F59E0B 44%, #D97706 70%, #92400E 100%)",
-            boxShadow: "0 6px 28px rgba(245,158,11,0.55), 0 0 50px rgba(245,158,11,0.18), inset 0 -8px 14px rgba(0,0,0,0.28), inset 0 5px 10px rgba(255,255,255,0.3)",
-          }} />
-        </div>
-
-        {/* Logo */}
-        <div style={{ position: "absolute", top: 244, left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
-          <div style={{ background: "#F3F0FF", borderRadius: 18, padding: "8px 38px", marginBottom: -5, zIndex: 1, boxShadow: "0 4px 18px rgba(0,0,0,0.22)" }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 33, color: "#2D1B6E", letterSpacing: 3 }}>THE</span>
-          </div>
-          <div style={{ background: "#2D1B6E", borderRadius: 18, padding: "10px 46px", zIndex: 2, boxShadow: "0 6px 24px rgba(0,0,0,0.3)" }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 39, color: "#F3F0FF", letterSpacing: 3 }}>RHYME</span>
-          </div>
-          <div style={{ background: "#F3F0FF", borderRadius: 18, padding: "8px 38px", marginTop: -5, zIndex: 1, boxShadow: "0 4px 18px rgba(0,0,0,0.22)" }}>
-            <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 33, color: "#2D1B6E", letterSpacing: 3 }}>GAME</span>
-          </div>
+        {/* Logo + ball */}
+        <div style={{ position: "absolute", top: 130, left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
+          <RhymeGameLogo size="medium" />
         </div>
 
         {/* Tagline */}
-        <div style={{ position: "absolute", top: 434, left: 0, right: 0, textAlign: "center" }}>
+        <div style={{ position: "absolute", top: 330, left: 0, right: 0, textAlign: "center" }}>
           <span style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, fontWeight: 700, color: "#FEF3C7" }}>
             Learn how to freestyle rap, FAST!
           </span>
         </div>
 
         {/* Level / rank badge */}
-        <div style={{ position: "absolute", top: 466, left: 16, right: 16, display: "flex", gap: 10 }}>
+        <div style={{ position: "absolute", top: 362, left: 16, right: 16, display: "flex", gap: 10 }}>
           <div style={{
             flex: 2,
             background: "rgba(255,255,255,0.13)",
@@ -194,8 +172,8 @@ export function JewelTone() {
           </div>
         </div>
 
-        {/* Word of the session */}
-        <div style={{ position: "absolute", top: 626, left: 16, right: 16 }}>
+        {/* Now Playing */}
+        <div style={{ position: "absolute", top: 524, left: 16, right: 16 }}>
           <div style={{
             background: "rgba(255,255,255,0.09)",
             border: "1px solid rgba(255,255,255,0.14)",

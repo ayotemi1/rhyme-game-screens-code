@@ -1,3 +1,5 @@
+import { RhymeGameLogo } from './RhymeGameLogo';
+
 export function JewelSplash() {
   return (
     <div style={{
@@ -90,59 +92,9 @@ export function JewelSplash() {
           gap: 0,
         }}>
 
-          {/* Gold ball + comet trail */}
-          <div style={{ display: "flex", alignItems: "center", marginBottom: 32, position: "relative" }}>
-            {/* Comet trail */}
-            {[
-              { w: 10, h: 10, opacity: 0.12, blur: 5, left: -58 },
-              { w: 16, h: 16, opacity: 0.2,  blur: 4, left: -44 },
-              { w: 22, h: 22, opacity: 0.32, blur: 3, left: -26 },
-            ].map((t, i) => (
-              <div key={i} style={{
-                position: "absolute",
-                left: t.left,
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: t.w, height: t.h,
-                borderRadius: "50%",
-                background: `rgba(245,158,11,${t.opacity})`,
-                filter: `blur(${t.blur}px)`,
-              }} />
-            ))}
-            {/* The ball */}
-            <div style={{
-              width: 88, height: 88, borderRadius: "50%",
-              background: "radial-gradient(circle at 32% 26%, #FEF9C3 0%, #FCD34D 16%, #F59E0B 42%, #D97706 68%, #92400E 100%)",
-              boxShadow: "0 10px 50px rgba(245,158,11,0.65), 0 0 90px rgba(245,158,11,0.25), inset 0 -12px 20px rgba(0,0,0,0.3), inset 0 7px 14px rgba(255,255,255,0.32)",
-            }} />
-          </div>
-
-          {/* Logo — large version */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0, marginBottom: 24 }}>
-            <div style={{
-              background: "#F3F0FF",
-              borderRadius: 16, padding: "7px 36px",
-              marginBottom: -5, zIndex: 1,
-              boxShadow: "0 4px 18px rgba(0,0,0,0.25)",
-            }}>
-              <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 28, color: "#2D1B6E", letterSpacing: 4 }}>THE</span>
-            </div>
-            <div style={{
-              background: "#2D1B6E",
-              borderRadius: 16, padding: "8px 44px",
-              zIndex: 2,
-              boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
-            }}>
-              <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 38, color: "#F3F0FF", letterSpacing: 4 }}>RHYME</span>
-            </div>
-            <div style={{
-              background: "#F3F0FF",
-              borderRadius: 16, padding: "7px 36px",
-              marginTop: -5, zIndex: 1,
-              boxShadow: "0 4px 18px rgba(0,0,0,0.25)",
-            }}>
-              <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 28, color: "#2D1B6E", letterSpacing: 4 }}>GAME</span>
-            </div>
+          {/* Logo + ball — large */}
+          <div style={{ marginBottom: 28 }}>
+            <RhymeGameLogo size="large" />
           </div>
 
           {/* Tagline */}

@@ -1,3 +1,5 @@
+import { RhymeGameLogo } from './RhymeGameLogo';
+
 export function JewelSetup() {
   const gridLetters: Array<{ letter: string; color: "orange" | "blue" | null }> = [
     { letter: "P", color: "orange" }, { letter: "", color: null }, { letter: "F", color: "orange" }, { letter: "", color: null },
@@ -58,32 +60,20 @@ export function JewelSetup() {
           </div>
         </div>
 
-        {/* Header: back + logo */}
-        <div style={{ position: "absolute", top: 48, left: 0, right: 0, height: 72, display: "flex", alignItems: "center", zIndex: 20, padding: "0 16px" }}>
-          <div style={{ width: 40, height: 40, borderRadius: 12, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.18)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-              <path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <div style={{ flex: 1, display: "flex", justifyContent: "center" }}>
-            {/* Compact inline logo */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
-              <div style={{ background: "#F3F0FF", borderRadius: 10, padding: "3px 18px", marginBottom: -3, zIndex: 1, boxShadow: "0 2px 10px rgba(0,0,0,0.2)" }}>
-                <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 18, color: "#2D1B6E", letterSpacing: 2 }}>THE</span>
-              </div>
-              <div style={{ background: "#2D1B6E", borderRadius: 10, padding: "4px 22px", zIndex: 2, boxShadow: "0 4px 14px rgba(0,0,0,0.3)" }}>
-                <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 22, color: "#F3F0FF", letterSpacing: 2 }}>RHYME</span>
-              </div>
-              <div style={{ background: "#F3F0FF", borderRadius: 10, padding: "3px 18px", marginTop: -3, zIndex: 1, boxShadow: "0 2px 10px rgba(0,0,0,0.2)" }}>
-                <span style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 900, fontSize: 18, color: "#2D1B6E", letterSpacing: 2 }}>GAME</span>
-              </div>
-            </div>
-          </div>
-          <div style={{ width: 40 }} />
+        {/* Back button */}
+        <div style={{ position: "absolute", top: 58, left: 16, width: 40, height: 40, borderRadius: 12, background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.18)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 20 }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+
+        {/* Logo + ball */}
+        <div style={{ position: "absolute", top: 48, left: "50%", transform: "translateX(-50%)", zIndex: 10 }}>
+          <RhymeGameLogo size="small" />
         </div>
 
         {/* Scrollable content area */}
-        <div style={{ position: "absolute", top: 160, bottom: 92, left: 0, right: 0, padding: "0 16px", display: "flex", flexDirection: "column", gap: 10, overflowY: "auto" }}>
+        <div style={{ position: "absolute", top: 210, bottom: 92, left: 0, right: 0, padding: "0 16px", display: "flex", flexDirection: "column", gap: 10, overflowY: "auto" }}>
 
           {/* Preview grid card */}
           <div style={{ background: "rgba(255,255,255,0.09)", border: "1px solid rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", borderRadius: 20, padding: 14 }}>

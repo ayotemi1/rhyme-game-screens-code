@@ -11,5 +11,6 @@ export const modules: ModuleMap = {
   "./components/mockups/rhyme-game/PurpleVelvet.tsx": () => import("../components/mockups/rhyme-game/PurpleVelvet.tsx"),
   "./components/mockups/rhyme-game/RadiantPurple.tsx": () => import("../components/mockups/rhyme-game/RadiantPurple.tsx"),
   "./components/mockups/rhyme-game/RhymeGameFlow.tsx": () => import("../components/mockups/rhyme-game/RhymeGameFlow.tsx"),
+  "./components/mockups/rhyme-game/RhymeGameLogo.tsx": () => import("../components/mockups/rhyme-game/RhymeGameLogo.tsx"),
   "./components/mockups/rhyme-game/StreetEditorial.tsx": () => import("../components/mockups/rhyme-game/StreetEditorial.tsx")
 };
