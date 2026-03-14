@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState, type ComponentType } from "react";
-import { toPng } from "html-to-image";
+import { useEffect, useState, type ComponentType } from "react";
 
 import { modules as discoveredModules } from "./.generated/mockup-components";
 
@@ -29,8 +28,6 @@ function PreviewRenderer({
 }) {
   const [Component, setComponent] = useState<ComponentType | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [exporting, setExporting] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -77,21 +74,6 @@ function PreviewRenderer({
     };
   }, [componentPath, modules]);
 
-  async function handleExport() {
-    if (!containerRef.current || exporting) return;
-    setExporting(true);
-    try {
-      const dataUrl = await toPng(containerRef.current, { pixelRatio: 2 });
-      const link = document.createElement("a");
-      const screenName = componentPath.split("/").pop() ?? "screen";
-      link.download = `${screenName}.png`;
-      link.href = dataUrl;
-      link.click();
-    } finally {
-      setExporting(false);
-    }
-  }
-
   if (error) {
     return (
       <pre style={{ color: "red", padding: "2rem", fontFamily: "system-ui" }}>
@@ -102,37 +84,7 @@ function PreviewRenderer({
 
   if (!Component) return null;
 
-  return (
-    <div style={{ position: "relative" }}>
-      <div ref={containerRef}>
-        <Component />
-      </div>
-      <button
-        onClick={handleExport}
-        disabled={exporting}
-        style={{
-          position: "fixed",
-          top: 12,
-          right: 12,
-          zIndex: 9999,
-          background: exporting ? "rgba(0,0,0,0.4)" : "rgba(0,0,0,0.65)",
-          backdropFilter: "blur(10px)",
-          border: "1px solid rgba(255,255,255,0.25)",
-          borderRadius: 10,
-          color: "#fff",
-          fontSize: 12,
-          fontWeight: 700,
-          fontFamily: "system-ui",
-          padding: "7px 14px",
-          cursor: exporting ? "default" : "pointer",
-          letterSpacing: 0.5,
-          boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
-        }}
-      >
-        {exporting ? "Exporting…" : "⬇ Save PNG"}
-      </button>
-    </div>
-  );
+  return <Component />;
 }
 
 function getBasePath(): string {
