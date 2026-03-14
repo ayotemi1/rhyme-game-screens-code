@@ -9,6 +9,7 @@ export const modules: ModuleMap = {
   "./components/mockups/rhyme-game/AppStoreS6.tsx": () => import("../components/mockups/rhyme-game/AppStoreS6.tsx"),
   "./components/mockups/rhyme-game/DarkLuxury.tsx": () => import("../components/mockups/rhyme-game/DarkLuxury.tsx"),
   "./components/mockups/rhyme-game/GameScreenContent.tsx": () => import("../components/mockups/rhyme-game/GameScreenContent.tsx"),
+  "./components/mockups/rhyme-game/JewelBeats.tsx": () => import("../components/mockups/rhyme-game/JewelBeats.tsx"),
   "./components/mockups/rhyme-game/JewelCity.tsx": () => import("../components/mockups/rhyme-game/JewelCity.tsx"),
   "./components/mockups/rhyme-game/JewelDictionary.tsx": () => import("../components/mockups/rhyme-game/JewelDictionary.tsx"),
   "./components/mockups/rhyme-game/JewelGame.tsx": () => import("../components/mockups/rhyme-game/JewelGame.tsx"),
