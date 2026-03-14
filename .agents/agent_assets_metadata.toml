@@ -1,0 +1,32 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "UVjB6xmSuMRuFvwHD6yo7"
+uri = "file://exports/S1-Hero.png"
+type = "image"
+title = "S1 — Hero"
+
+[[outputs]]
+id = "DucnXhTV3eK1f7hZA-HD7"
+uri = "file://exports/S2-Bouncing-Beat.png"
+type = "image"
+title = "S2 — Bouncing Beat"
+
+[[outputs]]
+id = "vyXu5kL35WAfaICCNsz2P"
+uri = "file://exports/S3-Track-Progress.png"
+type = "image"
+title = "S3 — Track Progress"
+
+[[outputs]]
+id = "5gINv9K_XUw_AB_ndOfaR"
+uri = "file://exports/S4-Share-Journey.png"
+type = "image"
+title = "S4 — Share Journey"
+
+[[outputs]]
+id = "_niXYU-s-5HrsmXBrO9Dk"
+uri = "file://exports/S5-Start-Freestyling.png"
+type = "image"
+title = "S5 — Start Freestyling"
