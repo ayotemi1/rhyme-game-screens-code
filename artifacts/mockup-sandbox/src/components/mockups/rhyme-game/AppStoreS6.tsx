@@ -3,9 +3,9 @@ import { RhymeGameLogo } from './RhymeGameLogo';
 function GoldPhone({ rotate = 0, x = 0, y = 0, children }: { rotate?: number; x?: number; y?: number; children: React.ReactNode }) {
   return (
     <div style={{ position: "absolute", left: x, top: y, transform: `rotate(${rotate}deg)`, transformOrigin: "center center" }}>
-      <div style={{ width: 216, height: 460, borderRadius: 50, background: "linear-gradient(145deg, #FCD34D, #F59E0B, #D97706)", padding: 4, boxShadow: "0 30px 80px rgba(0,0,0,0.55), 0 0 80px rgba(251,191,36,0.3)" }}>
-        <div style={{ width: "100%", height: "100%", borderRadius: 46, background: "#0D0D0D", overflow: "hidden", position: "relative" }}>
-          <div style={{ position: "absolute", top: 12, left: "50%", transform: "translateX(-50%)", width: 72, height: 20, borderRadius: 10, background: "#0D0D0D", zIndex: 10 }} />
+      <div style={{ width: 224, height: 476, borderRadius: 52, background: "linear-gradient(145deg, #FCD34D, #F59E0B, #D97706)", padding: 5, boxShadow: "0 30px 90px rgba(0,0,0,0.6), 0 0 80px rgba(251,191,36,0.3)" }}>
+        <div style={{ width: "100%", height: "100%", borderRadius: 47, background: "#0D0D0D", overflow: "hidden", position: "relative" }}>
+          <div style={{ position: "absolute", top: 13, left: "50%", transform: "translateX(-50%)", width: 76, height: 22, borderRadius: 11, background: "#0D0D0D", zIndex: 10 }} />
           {children}
         </div>
       </div>
@@ -13,32 +13,56 @@ function GoldPhone({ rotate = 0, x = 0, y = 0, children }: { rotate?: number; x?
   );
 }
 
-function SplashScreen() {
+function FullGameScreen() {
   return (
-    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #7a32f0, #6A25D9, #5418bf, #4313a8, #340d9c)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 0 }}>
-      {/* Mini logo pills */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: 20 }}>
-        <div style={{ width: 28, height: 28, borderRadius: "50%", background: "radial-gradient(circle at 32% 26%, #FFF8C0, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E)", boxShadow: "0 4px 14px rgba(245,158,11,0.6)", marginBottom: 5 }} />
-        <div style={{ background: "#EDE8D4", borderRadius: 8, padding: "3px 16px", marginBottom: -5 }}>
-          <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 11, color: "#1A0E4E" }}>THE</span>
-        </div>
-        <div style={{ background: "#1A0E4E", borderRadius: 8, padding: "4px 22px" }}>
-          <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 15, color: "#EDE8D4" }}>RHYME</span>
-        </div>
-        <div style={{ background: "#EDE8D4", borderRadius: 8, padding: "3px 18px", marginTop: -5 }}>
-          <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 12, color: "#1A0E4E" }}>GAME</span>
+    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #7a32f0, #6A25D9, #5418bf, #4313a8)" }}>
+      <div style={{ height: 38, display: "flex", alignItems: "flex-end", padding: "0 14px 4px", justifyContent: "space-between" }}>
+        <span style={{ fontSize: 9, fontWeight: 700, color: "rgba(255,255,255,0.75)", fontFamily: "sans-serif" }}>3:59</span>
+        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+          <div style={{ width: 10, height: 10, borderRadius: 2, background: "rgba(255,255,255,0.2)" }} />
+          <div style={{ width: 10, height: 10, borderRadius: 2, background: "rgba(255,255,255,0.2)" }} />
+          <div style={{ width: 10, height: 10, borderRadius: 2, background: "#22c55e" }} />
         </div>
       </div>
-      <div style={{ fontFamily: "sans-serif", fontSize: 9, color: "rgba(255,255,255,0.45)", marginBottom: 40 }}>Learn how to freestyle rap, FAST!</div>
-      {/* CTA */}
-      <div style={{ background: "linear-gradient(135deg, #8B3CFF, #6A25D9)", borderRadius: 14, padding: "10px 32px", border: "1px solid rgba(180,130,255,0.35)" }}>
-        <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 11, color: "#fff", letterSpacing: 1 }}>GET STARTED</span>
+      {/* Small logo inside splash */}
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: 12, marginBottom: 12 }}>
+        <div style={{ width: 18, height: 18, borderRadius: "50%", background: "radial-gradient(circle at 32% 26%, #FFF8C0, #F59E0B 40%, #D97706)", marginBottom: 4, boxShadow: "0 3px 8px rgba(245,158,11,0.5)" }} />
+        <div style={{ background: "#EDE8D4", borderRadius: 7, padding: "2px 14px", marginBottom: -4 }}>
+          <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 9, color: "#1A0E4E" }}>THE</span>
+        </div>
+        <div style={{ background: "#1A0E4E", borderRadius: 7, padding: "3px 18px" }}>
+          <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 12, color: "#EDE8D4" }}>RHYME</span>
+        </div>
+        <div style={{ background: "#EDE8D4", borderRadius: 7, padding: "2px 14px", marginTop: -4 }}>
+          <span style={{ fontFamily: "sans-serif", fontWeight: 900, fontSize: 9, color: "#1A0E4E" }}>GAME</span>
+        </div>
       </div>
-      {/* Dots */}
-      <div style={{ display: "flex", gap: 6, marginTop: 16, alignItems: "center" }}>
-        {[1, 0.4, 0.2].map((op, i) => (
-          <div key={i} style={{ width: i === 0 ? 8 : 5, height: i === 0 ? 8 : 5, borderRadius: "50%", background: i === 0 ? "#FBBF24" : `rgba(255,255,255,${op})` }} />
+      {/* Game grid — full */}
+      <div style={{ padding: "0 8px", display: "flex", flexDirection: "column", gap: 5 }}>
+        {[
+          [null, null, { w: "nudge", c: "#F59E0B" }, { w: "sludge",c:"#F59E0B"}],
+          [null, null, { w: "quality",c:"#10B981"}, { w:"robbery",c:"#10B981"}],
+          [{ w: "fling",c:"#3B82F6" }, { w:"bring",c:"#3B82F6" }, { w:"swing",c:"rgba(255,255,255,0.08)"}, { w:"beach",c:"rgba(255,255,255,0.08)"}],
+          [{ w:"street",c:"rgba(255,255,255,0.08)" }, { w:"beat",c:"rgba(255,255,255,0.08)" }, { w:"heat",c:"rgba(255,255,255,0.08)" }, { w:"feat",c:"rgba(255,255,255,0.08)"}],
+        ].map((row, ri) => (
+          <div key={ri} style={{ display: "flex", gap: 5 }}>
+            {row.map((cell, ci) => (
+              <div key={ci} style={{ flex: 1, height: 36, borderRadius: 8, background: cell ? cell.c : "rgba(255,255,255,0.07)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                {cell && <span style={{ fontFamily: "sans-serif", fontWeight: 800, fontSize: 8.5, color: "#fff" }}>{cell.w}</span>}
+              </div>
+            ))}
+          </div>
         ))}
+      </div>
+      {/* Music bar */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 52, background: "rgba(20,8,60,0.95)", borderTop: "1px solid rgba(255,255,255,0.1)", display: "flex", alignItems: "center", gap: 8, padding: "0 10px 6px" }}>
+        <div style={{ width: 28, height: 28, borderRadius: 6, background: "rgba(106,37,217,0.5)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>🎵</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: "sans-serif", fontWeight: 700, fontSize: 8, color: "#fff" }}>Sunday Book Club</div>
+          <div style={{ fontFamily: "sans-serif", fontSize: 7, color: "rgba(255,255,255,0.4)" }}>DJ Maintain</div>
+          <div style={{ height: 2, background: "rgba(255,255,255,0.1)", borderRadius: 2, marginTop: 3 }}><div style={{ width: "40%", height: "100%", background: "#22c55e" }} /></div>
+        </div>
+        <div style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(255,255,255,0.9)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9 }}>⏸</div>
       </div>
     </div>
   );
@@ -47,31 +71,26 @@ function SplashScreen() {
 export function AppStoreS6() {
   return (
     <div style={{ width: 390, height: 844, position: "relative", overflow: "hidden", background: "linear-gradient(145deg, #7230e8 0%, #6A25D9 25%, #5418bf 55%, #4313a8 85%, #360ea0 100%)", fontFamily: "'Nunito', sans-serif" }}>
-      {/* Radial glows */}
-      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 560, height: 560, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(140,70,255,0.22) 0%, transparent 68%)" }} />
-      <div style={{ position: "absolute", top: -80, left: "50%", transform: "translateX(-50%)", width: 340, height: 340, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.07)" }} />
-      <div style={{ position: "absolute", bottom: -40, left: "50%", transform: "translateX(-50%)", width: 260, height: 260, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.05)" }} />
+      <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 560, height: 560, borderRadius: "50%", background: "radial-gradient(ellipse, rgba(140,70,255,0.18) 0%, transparent 68%)" }} />
 
-      {/* Gold ball — entering from left (connecting from S5) */}
-      <div style={{ position: "absolute", top: 280, left: -18, width: 72, height: 72, borderRadius: "50%", background: "radial-gradient(circle at 32% 26%, #FFF8C0 0%, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E 100%)", boxShadow: "0 10px 40px rgba(245,158,11,0.7), inset 0 -10px 18px rgba(0,0,0,0.3)" }} />
+      {/* Gold ball entering from left (connects from S5) */}
+      <div style={{ position: "absolute", top: 300, left: -26, width: 86, height: 86, borderRadius: "50%", background: "radial-gradient(circle at 32% 26%, #FFF8C0 0%, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E 100%)", boxShadow: "0 12px 48px rgba(245,158,11,0.75), inset 0 -10px 18px rgba(0,0,0,0.3)", zIndex: 25 }} />
 
       {/* Top headline */}
-      <div style={{ position: "absolute", top: 60, left: 28, right: 28, textAlign: "center" }}>
-        <div style={{ fontFamily: "'Fredoka One', 'Nunito', sans-serif", fontSize: 40, lineHeight: 1.1, color: "#fff" }}>
-          Start<br />Freestyling<br /><span style={{ color: "#FBBF24" }}>Today</span>
-        </div>
-        <div style={{ fontFamily: "'Nunito', sans-serif", fontSize: 14, fontWeight: 600, color: "rgba(255,255,255,0.6)", marginTop: 12, lineHeight: 1.5 }}>
-          Free to start. No credit card.<br />Just tap and go.
+      <div style={{ position: "absolute", top: 52, left: 26, right: 26, textAlign: "center", zIndex: 20 }}>
+        <RhymeGameLogo size="small" />
+        <div style={{ fontFamily: "'Fredoka One', cursive", fontSize: 38, lineHeight: 1.05, color: "#fff", marginTop: 16 }}>
+          Play the Full<br /><span style={{ color: "#FBBF24" }}>Game</span>
         </div>
       </div>
 
       {/* Phone — centered, straight */}
-      <GoldPhone rotate={0} x={88} y={320}>
-        <SplashScreen />
+      <GoldPhone rotate={0} x={84} y={310}>
+        <FullGameScreen />
       </GoldPhone>
 
       {/* Home indicator */}
-      <div style={{ position: "absolute", bottom: 14, left: "50%", transform: "translateX(-50%)", width: 120, height: 5, borderRadius: 3, background: "rgba(255,255,255,0.2)" }} />
+      <div style={{ position: "absolute", bottom: 14, left: "50%", transform: "translateX(-50%)", width: 120, height: 5, borderRadius: 3, background: "rgba(255,255,255,0.22)", zIndex: 21 }} />
     </div>
   );
 }
