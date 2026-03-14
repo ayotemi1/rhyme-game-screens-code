@@ -25,7 +25,7 @@ function IosStatusBar() {
       {/* Dynamic Island pill */}
       <div style={{ position: "absolute", top: islandTop, left: "50%", transform: "translateX(-50%)", width: 68, height: islandH, borderRadius: 9, background: "#000", zIndex: 20 }} />
       {/* Time — left of island, vertically aligned with it */}
-      <span style={{ position: "absolute", left: 16, top: islandTop, lineHeight: `${islandH}px`, fontSize: 9.5, fontWeight: 700, color: "rgba(255,255,255,0.92)", fontFamily: "'Helvetica Neue', sans-serif", letterSpacing: -0.2 }}>9:41</span>
+      <span style={{ position: "absolute", left: 30, top: islandTop, lineHeight: `${islandH}px`, fontSize: 9.5, fontWeight: 700, color: "rgba(255,255,255,0.92)", fontFamily: "'Helvetica Neue', sans-serif", letterSpacing: -0.2 }}>9:41</span>
       {/* Icons — right of island, same vertical band */}
       <div style={{ position: "absolute", right: 18, top: islandTop, height: islandH, display: "flex", gap: 3, alignItems: "center" }}>
         {/* Signal bars */}
@@ -123,8 +123,8 @@ export function AccurateGameScreen() {
   return (
     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #7C3AED 0%, #6A25D9 40%, #5418bf 80%)", display: "flex", flexDirection: "column" }}>
       <IosStatusBar />
-      {/* Fixed-height spacer — keeps ball close to grid, minimal dead space */}
-      <div style={{ height: 60, position: "relative", flexShrink: 0 }}>
+      {/* Flex spacer — grows to push grid + player to the bottom; ball floats near its base */}
+      <div style={{ flex: 1, position: "relative", minHeight: 50 }}>
         <FloatingBall />
       </div>
       <GameGrid />
