@@ -15,17 +15,19 @@ const GAME_ROWS: Cell[][] = [
 const FONT = "'Fredoka One', 'Nunito', sans-serif";
 
 // ─── Compact Dynamic Island status bar ───────────────────────────────────────
-// Sized proportionally for a 214px-wide phone inner screen.
-// Real iPhone: island 126pt on 393pt screen = 32% → 214 * 0.32 = 68px wide
+// Island: 68px wide centered. Time and icons align to the island's vertical center.
+// left:16 for time, right:18 for icons — proportional to a 214px-wide screen.
 function IosStatusBar() {
+  const islandTop = 8;
+  const islandH   = 18;
   return (
-    <div style={{ position: "relative", height: 38, flexShrink: 0 }}>
+    <div style={{ position: "relative", height: 40, flexShrink: 0 }}>
       {/* Dynamic Island pill */}
-      <div style={{ position: "absolute", top: 6, left: "50%", transform: "translateX(-50%)", width: 68, height: 18, borderRadius: 9, background: "#000", zIndex: 20 }} />
-      {/* Time */}
-      <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 8, fontWeight: 700, color: "rgba(255,255,255,0.92)", fontFamily: "'Helvetica Neue', sans-serif", letterSpacing: -0.2, lineHeight: 1 }}>9:41</span>
-      {/* Icons */}
-      <div style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", display: "flex", gap: 3, alignItems: "center" }}>
+      <div style={{ position: "absolute", top: islandTop, left: "50%", transform: "translateX(-50%)", width: 68, height: islandH, borderRadius: 9, background: "#000", zIndex: 20 }} />
+      {/* Time — left of island, vertically aligned with it */}
+      <span style={{ position: "absolute", left: 16, top: islandTop, lineHeight: `${islandH}px`, fontSize: 9.5, fontWeight: 700, color: "rgba(255,255,255,0.92)", fontFamily: "'Helvetica Neue', sans-serif", letterSpacing: -0.2 }}>9:41</span>
+      {/* Icons — right of island, same vertical band */}
+      <div style={{ position: "absolute", right: 18, top: islandTop, height: islandH, display: "flex", gap: 3, alignItems: "center" }}>
         {/* Signal bars */}
         <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
           <rect x="0"   y="6"   width="2" height="3"   rx="0.5" fill="rgba(255,255,255,0.9)"/>
@@ -50,43 +52,11 @@ function IosStatusBar() {
   );
 }
 
-// ─── Ball with comet trail flying above the grid ──────────────────────────────
-// Ball at column-2 area (~x=107 of 214px), tail extends left — matches reference
-function CometBall() {
-  const ballR  = 10;
-  const tailW  = 42;
-  const ballCX = tailW + ballR;          // center x in SVG
-  const ballCY = ballR + 2;             // center y in SVG
-  const totalW = tailW + ballR * 2 + 2;
-  const totalH = ballR * 2 + 4;
-
+// ─── Ball floating above the grid — clean, no trail ──────────────────────────
+// Centered at roughly column 2 (x≈107 of 214px wide screen)
+function FloatingBall() {
   return (
-    <svg
-      style={{ position: "absolute", bottom: 8, left: 60 }}
-      width={totalW}
-      height={totalH}
-      overflow="visible"
-    >
-      <defs>
-        <radialGradient id="cgBall" cx="34%" cy="28%" r="58%">
-          <stop offset="0%"   stopColor="#FFF8C0"/>
-          <stop offset="18%"  stopColor="#FCD34D"/>
-          <stop offset="48%"  stopColor="#F59E0B"/>
-          <stop offset="78%"  stopColor="#D97706"/>
-          <stop offset="100%" stopColor="#92400E"/>
-        </radialGradient>
-        <linearGradient id="cgTail" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stopColor="#F59E0B" stopOpacity="0"/>
-          <stop offset="60%"  stopColor="#F59E0B" stopOpacity="0.45"/>
-          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.82"/>
-        </linearGradient>
-      </defs>
-      {/* Comet tail — ellipse fading left */}
-      <ellipse cx={tailW * 0.45} cy={ballCY + 1} rx={tailW * 0.55} ry={4.5} fill="url(#cgTail)"/>
-      {/* Ball */}
-      <circle cx={ballCX} cy={ballCY} r={ballR} fill="url(#cgBall)"
-        filter="drop-shadow(0 3px 9px rgba(245,158,11,0.75))"/>
-    </svg>
+    <div style={{ position: "absolute", bottom: 10, left: 95, width: 22, height: 22, borderRadius: "50%", background: "radial-gradient(circle at 34% 28%, #FFF8C0 0%, #FCD34D 18%, #F59E0B 48%, #D97706 78%, #92400E 100%)", boxShadow: "0 4px 16px rgba(245,158,11,0.8), inset 0 -3px 6px rgba(0,0,0,0.25), inset 0 2px 4px rgba(255,255,255,0.3)", zIndex: 10 }} />
   );
 }
 
@@ -148,14 +118,14 @@ function MusicPlayer() {
 }
 
 // ─── For S1 and S2 ────────────────────────────────────────────────────────────
-// Layout: compact status bar → spacer (comet ball floats here) → grid → music player
+// Layout: status bar → fixed spacer (ball floats just above the grid) → grid → music player
 export function AccurateGameScreen() {
   return (
     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #7C3AED 0%, #6A25D9 40%, #5418bf 80%)", display: "flex", flexDirection: "column" }}>
       <IosStatusBar />
-      {/* Spacer — comet ball floats in this area above the grid */}
-      <div style={{ flex: 1, position: "relative", minHeight: 50 }}>
-        <CometBall />
+      {/* Fixed-height spacer — keeps ball close to grid, minimal dead space */}
+      <div style={{ height: 60, position: "relative", flexShrink: 0 }}>
+        <FloatingBall />
       </div>
       <GameGrid />
       <MusicPlayer />
