@@ -1,4 +1,4 @@
-import bigmicImg from '@assets/bigmic.png';
+import bigmicMicHold from '@assets/bigmic-michold.png';
 
 function GoldPhone({ rotate = 0, x = 0, y = 0, children }: { rotate?: number; x?: number; y?: number; children: React.ReactNode }) {
   return (
@@ -86,11 +86,11 @@ export function AppStoreS4() {
         <LiveGameScreen />
       </GoldPhone>
 
-      {/* Big Mic — right side, pointing at phone */}
+      {/* Big Mic — MicHold pose, right side */}
       <img
-        src={bigmicImg}
-        alt="Big Mic mascot"
-        style={{ position: "absolute", bottom: 10, right: -18, width: 220, height: "auto", zIndex: 25, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
+        src={bigmicMicHold}
+        alt="Big Mic mascot holding mic"
+        style={{ position: "absolute", bottom: 0, right: -22, width: 240, height: "auto", zIndex: 25, filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5))" }}
       />
 
       {/* Floating social badge */}
