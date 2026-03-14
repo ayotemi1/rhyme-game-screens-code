@@ -58,7 +58,7 @@ export function JewelSheetStats() {
           backdropFilter: "blur(40px)",
           borderTop: "1px solid rgba(180,130,255,0.35)",
           borderRadius: "28px 28px 0 0",
-          paddingBottom: 34,
+          paddingBottom: 110,
         }}>
           {/* Handle */}
           <div style={{ display: "flex", justifyContent: "center", paddingTop: 12, paddingBottom: 4 }}>
