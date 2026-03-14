@@ -118,13 +118,14 @@ function MusicPlayer() {
 }
 
 // ─── For S1 and S2 ────────────────────────────────────────────────────────────
-// Layout: status bar → fixed spacer (ball floats just above the grid) → grid → music player
-export function AccurateGameScreen() {
+// Layout: status bar → spacer (ball floats near base) → grid → music player
+// spacerMaxHeight: optional cap on the spacer so the grid can sit higher (e.g. S1)
+export function AccurateGameScreen({ spacerMaxHeight }: { spacerMaxHeight?: number } = {}) {
   return (
     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, #7C3AED 0%, #6A25D9 40%, #5418bf 80%)", display: "flex", flexDirection: "column" }}>
       <IosStatusBar />
-      {/* Flex spacer — grows to push grid + player to the bottom; ball floats near its base */}
-      <div style={{ flex: 1, position: "relative", minHeight: 50 }}>
+      {/* Flex spacer — grows to push grid + player down; optional maxHeight pulls them back up */}
+      <div style={{ flex: 1, position: "relative", minHeight: 50, ...(spacerMaxHeight ? { maxHeight: spacerMaxHeight } : {}) }}>
         <FloatingBall />
       </div>
       <GameGrid />

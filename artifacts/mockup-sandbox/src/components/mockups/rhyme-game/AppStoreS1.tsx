@@ -35,7 +35,7 @@ export function AppStoreS1() {
 
       {/* Phone — pushed down, angled right, bleeding off edge */}
       <GoldPhone rotate={-12} x={96} y={536}>
-        <AccurateGameScreen />
+        <AccurateGameScreen spacerMaxHeight={120} />
       </GoldPhone>
 
       {/* Gold ball — right edge, connecting to S2 */}
