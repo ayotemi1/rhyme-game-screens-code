@@ -1,16 +1,31 @@
 import bigmicMicHold from '@assets/bigmic-michold.png';
 import gameplayPhoto from '@assets/gameplay-photo.png';
-import { bouncePath, bounceContacts, ballPeakPosition } from './GameScreenContent';
 
 const X_OFFSET = 1170;
 const SVG_TOP  = 340;
 const SVG_H    = 260;
 
+// Half-arc: enters from left contact, curves UP to ball peak — line terminates at ball.
+// No right-side continuation; the ball is the visual endpoint of the arc.
 function SineTrailS4() {
-  const path     = bouncePath(X_OFFSET, 390, SVG_H);
-  const contacts = bounceContacts(X_OFFSET, 390, SVG_H);
-  const peak     = ballPeakPosition(X_OFFSET, 390, SVG_H);
-  const ballR    = 30;
+  const base   = SVG_H - 14;          // 246  — y at contact points (bottom of arc)
+  const amp    = SVG_H * 0.85;        // 221  — arc height
+  const HP     = 390;                 // half-period
+  const PO     = 390;                 // phase offset
+  const peakX  = 195;                 // x on slide where sin = 1 (arc peak)
+  const peakY  = base - amp;          // y at peak (~25)
+  const ballR  = 30;
+
+  // Sample the sine arc from x=0 → peakX only (half arc, ascending)
+  const steps = 32;
+  const pts: string[] = [];
+  for (let i = 0; i <= steps; i++) {
+    const x  = (peakX / steps) * i;
+    const xc = x + X_OFFSET;
+    const y  = base - amp * Math.abs(Math.sin((Math.PI * (xc - PO)) / HP));
+    pts.push(`${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`);
+  }
+  const d = pts.join(" ");
 
   return (
     <>
@@ -21,33 +36,31 @@ function SineTrailS4() {
         <defs>
           <linearGradient id="wg4" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%"   stopColor="#F59E0B" stopOpacity="0.28"/>
-            <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.85"/>
+            <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.9"/>
           </linearGradient>
         </defs>
-        <path d={path} stroke="url(#wg4)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        {contacts.map((pt, i) => (
-          <g key={i}>
-            <circle cx={pt.x} cy={pt.y} r="16" fill="rgba(251,191,36,0.12)"/>
-            <circle cx={pt.x} cy={pt.y} r="8"  fill="rgba(251,191,36,0.32)"/>
-            <circle cx={pt.x} cy={pt.y} r="3.5" fill="rgba(251,191,36,0.72)"/>
-          </g>
-        ))}
+        {/* Half-arc — left contact to ball peak only */}
+        <path d={d} stroke="url(#wg4)" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        {/* Left entry contact dot */}
+        <g>
+          <circle cx={0} cy={base} r="16" fill="rgba(251,191,36,0.12)"/>
+          <circle cx={0} cy={base} r="8"  fill="rgba(251,191,36,0.32)"/>
+          <circle cx={0} cy={base} r="3.5" fill="rgba(251,191,36,0.72)"/>
+        </g>
       </svg>
 
-      {/* Ball at the arc peak — floats above phone at z-index 30 */}
-      {peak && (
-        <div style={{
-          position: "absolute",
-          left: peak.x - ballR,
-          top:  SVG_TOP + peak.y - ballR,
-          width: ballR * 2,
-          height: ballR * 2,
-          borderRadius: "50%",
-          background: "radial-gradient(circle at 32% 26%, #FFF8C0 0%, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E 100%)",
-          boxShadow: "0 10px 40px rgba(245,158,11,0.85), 0 0 60px rgba(245,158,11,0.35), inset 0 -6px 12px rgba(0,0,0,0.3), inset 0 4px 8px rgba(255,255,255,0.28)",
-          zIndex: 30,
-        }} />
-      )}
+      {/* Ball — sits at the arc peak above the phone image */}
+      <div style={{
+        position: "absolute",
+        left: peakX - ballR,
+        top:  SVG_TOP + peakY - ballR,
+        width: ballR * 2,
+        height: ballR * 2,
+        borderRadius: "50%",
+        background: "radial-gradient(circle at 32% 26%, #FFF8C0 0%, #FCD34D 15%, #F59E0B 40%, #D97706 66%, #92400E 100%)",
+        boxShadow: "0 10px 40px rgba(245,158,11,0.85), 0 0 60px rgba(245,158,11,0.35), inset 0 -6px 12px rgba(0,0,0,0.3), inset 0 4px 8px rgba(255,255,255,0.28)",
+        zIndex: 30,
+      }} />
     </>
   );
 }
