@@ -1,11 +1,42 @@
-import bigmicImg from '@assets/bigmic.png';
+import { bouncePath, bounceContacts } from './GameScreenContent';
+
+// S3 sine wave: xOffset = 780 (S3 is the 3rd slide)
+const X_OFFSET = 780;
+const SVG_TOP  = 340;
+const SVG_H    = 260;
+
+function SineTrailS3() {
+  const path     = bouncePath(X_OFFSET, 390, SVG_H);
+  const contacts = bounceContacts(X_OFFSET, 390, SVG_H);
+  return (
+    <svg
+      style={{ position: "absolute", top: SVG_TOP, left: 0, width: 390, height: SVG_H, zIndex: 1, pointerEvents: "none" }}
+      viewBox={`0 0 390 ${SVG_H}`}
+    >
+      <defs>
+        <linearGradient id="wg3" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stopColor="#F59E0B" stopOpacity="0.2"/>
+          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.65"/>
+        </linearGradient>
+      </defs>
+      <path d={path} stroke="url(#wg3)" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      {contacts.map((pt, i) => (
+        <g key={i}>
+          <circle cx={pt.x} cy={pt.y} r="14" fill="rgba(251,191,36,0.1)"/>
+          <circle cx={pt.x} cy={pt.y} r="7"  fill="rgba(251,191,36,0.28)"/>
+          <circle cx={pt.x} cy={pt.y} r="3"  fill="rgba(251,191,36,0.62)"/>
+        </g>
+      ))}
+    </svg>
+  );
+}
 
 function GoldPhone({ rotate = 0, x = 0, y = 0, children }: { rotate?: number; x?: number; y?: number; children: React.ReactNode }) {
   return (
     <div style={{ position: "absolute", left: x, top: y, transform: `rotate(${rotate}deg)`, transformOrigin: "center center" }}>
       <div style={{ width: 224, height: 476, borderRadius: 52, background: "linear-gradient(145deg, #FCD34D, #F59E0B, #D97706)", padding: 5, boxShadow: "0 30px 90px rgba(0,0,0,0.6)" }}>
         <div style={{ width: "100%", height: "100%", borderRadius: 47, background: "#0D0D0D", overflow: "hidden", position: "relative" }}>
-          <div style={{ position: "absolute", top: 9, left: "50%", transform: "translateX(-50%)", width: 86, height: 24, borderRadius: 12, background: "#000", zIndex: 20 }} />
+          <div style={{ position: "absolute", top: 13, left: "50%", transform: "translateX(-50%)", width: 76, height: 22, borderRadius: 11, background: "#0D0D0D", zIndex: 10 }} />
           {children}
         </div>
       </div>
@@ -62,12 +93,15 @@ export function AppStoreS3() {
     <div style={{ width: 390, height: 844, position: "relative", overflow: "hidden", background: "linear-gradient(145deg, #7230e8 0%, #6A25D9 25%, #5418bf 55%, #4313a8 85%, #360ea0 100%)", fontFamily: "'Nunito', sans-serif" }}>
       <div style={{ position: "absolute", top: -30, left: -30, width: 260, height: 260, borderRadius: "50%", border: "1px solid rgba(255,255,255,0.06)" }} />
 
+      {/* Cross-screen sine wave trail */}
+      <SineTrailS3 />
+
       {/* Phone — upper-center, slight tilt */}
       <GoldPhone rotate={4} x={82} y={48}>
         <StatsScreen />
       </GoldPhone>
 
-      {/* 🔥 STREAK BADGE — jumps out of phone, overlapping frame */}
+      {/* 🔥 STREAK BADGE */}
       <div style={{
         position: "absolute", top: 202, right: 14, zIndex: 30,
         background: "linear-gradient(135deg, #FF6B35 0%, #FF4500 60%, #CC2A00 100%)",
