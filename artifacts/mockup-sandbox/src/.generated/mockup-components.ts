@@ -3,6 +3,7 @@ type ModuleMap = Record<string, () => Promise<Record<string, unknown>>>;
 export const modules: ModuleMap = {
   "./components/mockups/rhyme-game/DarkLuxury.tsx": () => import("../components/mockups/rhyme-game/DarkLuxury.tsx"),
   "./components/mockups/rhyme-game/JewelCity.tsx": () => import("../components/mockups/rhyme-game/JewelCity.tsx"),
+  "./components/mockups/rhyme-game/JewelDictionary.tsx": () => import("../components/mockups/rhyme-game/JewelDictionary.tsx"),
   "./components/mockups/rhyme-game/JewelGame.tsx": () => import("../components/mockups/rhyme-game/JewelGame.tsx"),
   "./components/mockups/rhyme-game/JewelSetup.tsx": () => import("../components/mockups/rhyme-game/JewelSetup.tsx"),
   "./components/mockups/rhyme-game/JewelSheetPlay.tsx": () => import("../components/mockups/rhyme-game/JewelSheetPlay.tsx"),
@@ -10,7 +11,9 @@ export const modules: ModuleMap = {
   "./components/mockups/rhyme-game/JewelSheetTools.tsx": () => import("../components/mockups/rhyme-game/JewelSheetTools.tsx"),
   "./components/mockups/rhyme-game/JewelSplash.tsx": () => import("../components/mockups/rhyme-game/JewelSplash.tsx"),
   "./components/mockups/rhyme-game/JewelStats.tsx": () => import("../components/mockups/rhyme-game/JewelStats.tsx"),
+  "./components/mockups/rhyme-game/JewelTapMode.tsx": () => import("../components/mockups/rhyme-game/JewelTapMode.tsx"),
   "./components/mockups/rhyme-game/JewelTone.tsx": () => import("../components/mockups/rhyme-game/JewelTone.tsx"),
+  "./components/mockups/rhyme-game/JewelWordGen.tsx": () => import("../components/mockups/rhyme-game/JewelWordGen.tsx"),
   "./components/mockups/rhyme-game/NeonArcade.tsx": () => import("../components/mockups/rhyme-game/NeonArcade.tsx"),
   "./components/mockups/rhyme-game/PurpleVelvet.tsx": () => import("../components/mockups/rhyme-game/PurpleVelvet.tsx"),
   "./components/mockups/rhyme-game/RadiantPurple.tsx": () => import("../components/mockups/rhyme-game/RadiantPurple.tsx"),
