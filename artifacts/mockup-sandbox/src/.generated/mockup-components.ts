@@ -11,6 +11,7 @@ export const modules: ModuleMap = {
   "./components/mockups/rhyme-game/GameScreenContent.tsx": () => import("../components/mockups/rhyme-game/GameScreenContent.tsx"),
   "./components/mockups/rhyme-game/JewelBeats.tsx": () => import("../components/mockups/rhyme-game/JewelBeats.tsx"),
   "./components/mockups/rhyme-game/JewelBeats2.tsx": () => import("../components/mockups/rhyme-game/JewelBeats2.tsx"),
+  "./components/mockups/rhyme-game/JewelBeats3.tsx": () => import("../components/mockups/rhyme-game/JewelBeats3.tsx"),
   "./components/mockups/rhyme-game/JewelCity.tsx": () => import("../components/mockups/rhyme-game/JewelCity.tsx"),
   "./components/mockups/rhyme-game/JewelDictionary.tsx": () => import("../components/mockups/rhyme-game/JewelDictionary.tsx"),
   "./components/mockups/rhyme-game/JewelGame.tsx": () => import("../components/mockups/rhyme-game/JewelGame.tsx"),
