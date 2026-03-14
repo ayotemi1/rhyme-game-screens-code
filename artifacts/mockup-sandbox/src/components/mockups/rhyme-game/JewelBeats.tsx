@@ -85,7 +85,7 @@ function TrackRow({ title, bpm, genre, active = false }: { title: string; bpm: n
 // ── Beat controls strip ───────────────────────────────────────────────────────
 function BeatControls() {
   return (
-    <div style={{ background: "rgba(8,4,20,0.88)", backdropFilter: "blur(16px)", borderTop: "1px solid rgba(255,255,255,0.07)", padding: "10px 20px" }}>
+    <div style={{ background: "rgba(8,4,20,0.88)", backdropFilter: "blur(16px)", padding: "10px 20px" }}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
         {/* Shuffle */}
         <svg width="22" height="18" viewBox="0 0 22 18" fill="none">
@@ -265,14 +265,16 @@ export function JewelBeats() {
         ))}
       </div>
 
-      {/* Beat controls */}
-      <BeatControls />
-
-      {/* Transport */}
-      <Transport />
-
-      {/* Now playing */}
-      <NowPlaying />
+      {/* Player panel — rounded top corners, floats up from bottom */}
+      <div style={{ borderRadius: "28px 28px 0 0", overflow: "hidden", boxShadow: "0 -8px 32px rgba(0,0,0,0.45)" }}>
+        {/* Drag handle */}
+        <div style={{ background: "rgba(8,4,20,0.88)", paddingTop: 10, display: "flex", justifyContent: "center" }}>
+          <div style={{ width: 36, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.18)" }} />
+        </div>
+        <BeatControls />
+        <Transport />
+        <NowPlaying />
+      </div>
     </div>
   );
 }
