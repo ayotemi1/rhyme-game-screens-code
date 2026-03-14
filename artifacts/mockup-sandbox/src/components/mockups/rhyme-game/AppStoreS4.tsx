@@ -2,7 +2,7 @@ import bigmicMicHold from '@assets/bigmic-michold.png';
 import gameplayPhoto from '@assets/gameplay-photo.png';
 
 const X_OFFSET = 1170;
-const SVG_TOP  = 340;
+const SVG_TOP  = 240;
 const SVG_H    = 260;
 
 // Half-arc: enters from left contact, curves UP to ball peak — line terminates at ball.
